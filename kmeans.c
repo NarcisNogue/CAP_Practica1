@@ -1,4 +1,5 @@
 #include "kmeanslib.c"
+#include <omp.h>
 
 /*
  * Return the index number of the closest centroid to a given pixel (p)
@@ -48,6 +49,7 @@ void kmeans(uint8_t k, cluster* centroids, uint32_t num_pixels, rgb* pixels){
 	
 	// Init centroids	
 	printf("STEP 2: Init centroids\n");
+	#pragma omp parallel for
 	for(i = 0; i < k; i++) 
 	{
 		random_num = rand() % num_pixels;
@@ -61,7 +63,7 @@ void kmeans(uint8_t k, cluster* centroids, uint32_t num_pixels, rgb* pixels){
 	i = 0;
 	do 
   	{
-		// Reset centroids
+		// Reset centroids (Not worth it to paralelize but TEST later)
 		for(j = 0; j < k; j++) 
     	{
 			centroids[j].mean_r = 0;

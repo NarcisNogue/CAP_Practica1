@@ -12,7 +12,7 @@
  */
 uint8_t find_closest_centroid(rgb* p, cluster* centroids, uint8_t num_clusters){
 	uint32_t min = UINT32_MAX;
-	uint32_t dis[num_clusters];
+	uint32_t dis;
 	uint8_t closest = 0, j;
 	int16_t diffR, diffG, diffB;	
 
@@ -22,11 +22,11 @@ uint8_t find_closest_centroid(rgb* p, cluster* centroids, uint8_t num_clusters){
 		diffG = centroids[j].g - p->g;
 		diffB = centroids[j].b - p->b;
 		// No sqrt required.
-		dis[j] = diffR*diffR + diffG*diffG + diffB*diffB;
+		dis = diffR*diffR + diffG*diffG + diffB*diffB;
 		
-		if(dis[j] < min) 
+		if(dis < min) 
 		{
-			min = dis[j];
+			min = dis;
 			closest = j;
 		}
 	}
@@ -64,18 +64,18 @@ void kmeans(uint8_t k, cluster* centroids, uint32_t num_pixels, rgb* pixels){
 	do 
   	{
 		// Reset centroids (Not worth it to paralelize but TEST later)
-		#pragma omp parallel for
-		for(j = 0; j < k; j++) 
-    	{
-			centroids[j].mean_r = 0;
-			centroids[j].mean_g = 0;
-			centroids[j].mean_b = 0;
-			centroids[j].num_points = 0;
-		}
-   
 		// Find closest cluster for each pixel
 		#pragma omp parallel
 		{
+			#pragma omp for
+			for(j = 0; j < k; j++) 
+			{
+				centroids[j].mean_r = 0;
+				centroids[j].mean_g = 0;
+				centroids[j].mean_b = 0;
+				centroids[j].num_points = 0;
+			}
+   
 			cluster* centroids_private;
 			centroids_private = malloc(k * sizeof(cluster));
 			#pragma omp parallel for
@@ -105,26 +105,29 @@ void kmeans(uint8_t k, cluster* centroids, uint32_t num_pixels, rgb* pixels){
 					centroids[j].num_points += centroids_private[j].num_points;
 				}
 			}
-		}
-
-		// Update centroids & check stop condition
-		condition = 0;
-		for(j = 0; j < k; j++) 
-		{
-			if(centroids[j].num_points == 0) 
+			free(centroids_private);
+			// Update centroids & check stop condition
+			condition = 0;
+			#pragma omp for
+			for(j = 0; j < k; j++) 
 			{
-				continue;
-			}
+				if(centroids[j].num_points == 0) 
+				{
+					continue;
+				}
 
-			centroids[j].mean_r = centroids[j].mean_r/centroids[j].num_points;
-			centroids[j].mean_g = centroids[j].mean_g/centroids[j].num_points;
-			centroids[j].mean_b = centroids[j].mean_b/centroids[j].num_points;
-			changed = centroids[j].mean_r != centroids[j].r || centroids[j].mean_g != centroids[j].g || centroids[j].mean_b != centroids[j].b;
-			condition = condition || changed;
-			centroids[j].r = centroids[j].mean_r;
-			centroids[j].g = centroids[j].mean_g;
-			centroids[j].b = centroids[j].mean_b;
+				centroids[j].mean_r = centroids[j].mean_r/centroids[j].num_points;
+				centroids[j].mean_g = centroids[j].mean_g/centroids[j].num_points;
+				centroids[j].mean_b = centroids[j].mean_b/centroids[j].num_points;
+				changed = centroids[j].mean_r != centroids[j].r || centroids[j].mean_g != centroids[j].g || centroids[j].mean_b != centroids[j].b;
+				#pragma omp atomic
+				condition = condition || changed;
+				centroids[j].r = centroids[j].mean_r;
+				centroids[j].g = centroids[j].mean_g;
+				centroids[j].b = centroids[j].mean_b;
+			}
 		}
+
 		
 		i++;
 	} while(condition);

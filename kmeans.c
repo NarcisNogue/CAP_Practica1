@@ -64,6 +64,7 @@ void kmeans(uint8_t k, cluster* centroids, uint32_t num_pixels, rgb* pixels){
 	do 
   	{
 		// Reset centroids (Not worth it to paralelize but TEST later)
+		#pragma omp parallel for
 		for(j = 0; j < k; j++) 
     	{
 			centroids[j].mean_r = 0;
@@ -73,13 +74,37 @@ void kmeans(uint8_t k, cluster* centroids, uint32_t num_pixels, rgb* pixels){
 		}
    
 		// Find closest cluster for each pixel
-		for(j = 0; j < num_pixels; j++) 
-    	{
-			closest = find_closest_centroid(&pixels[j], centroids, k);
-			centroids[closest].mean_r += pixels[j].r;
-			centroids[closest].mean_g += pixels[j].g;
-			centroids[closest].mean_b += pixels[j].b;
-			centroids[closest].num_points++;
+		#pragma omp parallel
+		{
+			cluster* centroids_private;
+			centroids_private = malloc(k * sizeof(cluster));
+			#pragma omp parallel for
+			for(j = 0; j < k; j++) 
+			{
+				centroids_private[j].mean_r = 0;
+				centroids_private[j].mean_g = 0;
+				centroids_private[j].mean_b = 0;
+				centroids_private[j].num_points = 0;
+			}
+			#pragma omp for private(closest)
+			for(j = 0; j < num_pixels; j++) 
+			{
+				closest = find_closest_centroid(&pixels[j], centroids, k);
+				centroids_private[closest].mean_r += pixels[j].r;
+				centroids_private[closest].mean_g += pixels[j].g;
+				centroids_private[closest].mean_b += pixels[j].b;
+				centroids_private[closest].num_points++;
+			}
+			#pragma omp critical
+			{
+				for(j = 0; j < k; j++)
+				{
+					centroids[j].mean_r += centroids_private[j].mean_r;
+					centroids[j].mean_g += centroids_private[j].mean_g;
+					centroids[j].mean_b += centroids_private[j].mean_b;
+					centroids[j].num_points += centroids_private[j].num_points;
+				}
+			}
 		}
 
 		// Update centroids & check stop condition

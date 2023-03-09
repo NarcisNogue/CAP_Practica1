@@ -1,34 +1,41 @@
-cpu-bind=MASK - clus11, task  0  0 [10856]: mask 0xfff set
+cpu-bind=MASK - clus11, task  0  0 [42939]: mask 0xfff set
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
 TEST = 1
 
 WIDTH : 3840
 HEIGHT: 2160
 LENGHT: 8294400
 
-STEP 1: K = 1
+STEP 1: K = 6
 STEP 2: Init centroids
 STEP 3: Updating centroids
 
-Number of K-Means iterations: 2
+Number of K-Means iterations: 30
 
-Centroide 0 : R[119]	G[109]	B[96]
+Centroide 0 : R[71]	G[60]	B[49]
+Centroide 1 : R[30]	G[24]	B[20]
+Centroide 2 : R[113]	G[112]	B[101]
+Centroide 3 : R[176]	G[163]	B[145]
+Centroide 4 : R[222]	G[219]	B[207]
+Centroide 5 : R[146]	G[97]	B[57]
 
-Time to Kmeans is 1 seconds and 199134 microseconds
-Checksum value = 1245216
+Time to Kmeans is 5 seconds and 677158 microseconds
+Checksum value = 16532316
 
- Performance counter stats for './kmeans test 1 imagen.bmp':
+ Performance counter stats for './kmeans test 6 imagen.bmp':
 
-       1586,271303      task-clock (msec)         #    0,993 CPUs utilized          
-                 7      context-switches          #    0,004 K/sec                  
-                 1      cpu-migrations            #    0,001 K/sec                  
-               951      page-faults               #    0,600 K/sec                  
-     4.109.235.651      cycles                    #    2,590 GHz                      (50,01%)
-        20.064.911      stalled-cycles-frontend   #    0,49% frontend cycles idle     (50,06%)
-     1.926.890.203      stalled-cycles-backend    #  46,89% backend cycles idle       (50,08%)
-     5.406.054.727      instructions              #    1,32  insn per cycle         
-                                                  #    0,36  stalled cycles per insn  (50,05%)
-       451.065.909      branches                  #  284,356 M/sec                    (49,97%)
-            48.077      branch-misses             #    0,01% of all branches          (50,02%)
+      45853,395095      task-clock (msec)         #    7,516 CPUs utilized          
+             1.834      context-switches          #    0,040 K/sec                  
+               198      cpu-migrations            #    0,004 K/sec                  
+            25.158      page-faults               #    0,549 K/sec                  
+   118.878.140.366      cycles                    #    2,593 GHz                      (50,02%)
+     1.369.918.053      stalled-cycles-frontend   #    1,15% frontend cycles idle     (50,03%)
+    54.868.884.268      stalled-cycles-backend    #  46,16% backend cycles idle       (50,01%)
+   164.145.635.606      instructions              #    1,38  insn per cycle         
+                                                  #    0,33  stalled cycles per insn  (50,00%)
+     5.889.976.761      branches                  #  128,452 M/sec                    (49,98%)
+        52.901.102      branch-misses             #    0,90% of all branches          (50,01%)
 
-       1,597654830 seconds time elapsed
+       6,100601990 seconds time elapsed
 

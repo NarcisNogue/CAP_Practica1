@@ -107,25 +107,23 @@ void kmeans(uint8_t k, cluster* centroids, uint32_t num_pixels, rgb* pixels){
 			}
 			free(centroids_private);
 			// Update centroids & check stop condition
-			condition = 0;
-			#pragma omp for
-			for(j = 0; j < k; j++) 
+		}
+		condition = 0;
+		for(j = 0; j < k; j++) 
+		{
+			if(centroids[j].num_points == 0) 
 			{
-				if(centroids[j].num_points == 0) 
-				{
-					continue;
-				}
-
-				centroids[j].mean_r = centroids[j].mean_r/centroids[j].num_points;
-				centroids[j].mean_g = centroids[j].mean_g/centroids[j].num_points;
-				centroids[j].mean_b = centroids[j].mean_b/centroids[j].num_points;
-				changed = centroids[j].mean_r != centroids[j].r || centroids[j].mean_g != centroids[j].g || centroids[j].mean_b != centroids[j].b;
-				#pragma omp atomic
-				condition = condition || changed;
-				centroids[j].r = centroids[j].mean_r;
-				centroids[j].g = centroids[j].mean_g;
-				centroids[j].b = centroids[j].mean_b;
+				continue;
 			}
+
+			centroids[j].mean_r = centroids[j].mean_r/centroids[j].num_points;
+			centroids[j].mean_g = centroids[j].mean_g/centroids[j].num_points;
+			centroids[j].mean_b = centroids[j].mean_b/centroids[j].num_points;
+			changed = centroids[j].mean_r != centroids[j].r || centroids[j].mean_g != centroids[j].g || centroids[j].mean_b != centroids[j].b;
+			condition = condition || changed;
+			centroids[j].r = centroids[j].mean_r;
+			centroids[j].g = centroids[j].mean_g;
+			centroids[j].b = centroids[j].mean_b;
 		}
 
 		
@@ -221,6 +219,7 @@ int main(int argc, char *argv[]) {
 				pixel.r = centroids[closest].r;
 				pixel.g = centroids[closest].g;
 				pixel.b = centroids[closest].b;
+				//printf("%d, %d, %d\n", pixel.r, pixel.g, pixel.b);
 				
 				if(fwrite(&pixel, sizeof(uint8_t), 3, fp) != 3){
 					printf("Error writing BMP.\n");

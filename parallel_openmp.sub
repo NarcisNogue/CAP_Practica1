@@ -1,13 +1,15 @@
 #!/bin/bash
+#SBATCH --output=batch_out.out
 #SBATCH --job-name=openmp
 #SBATCH -N 1
 ##SBATCH -n 1
 #SBATCH --partition=nodo.q
 #SBATCH --exclusive
 
-gcc -fopenmp -lm kmeans.c -std=c99 -o kmeans    # compile
+gcc -fopenmp -lm -Ofast kmeans.c -std=c99 -o kmeans    # compile
 
 export OMP_NUM_THREADS=12                        # set number of threads
 
-perf stat ./kmeans exec 25 profile.bmp profile_out.bmp # execute with perf profiler exec
-# perf stat ./kmeans test 6 imagen.bmp            # execute with perf profiler test
+# perf stat ./kmeans exec 25 imagen.bmp output.bmp # execute with perf profiler exec
+./kmeans test 4 imagen.bmp            # execute with perf profiler test
+# perf report

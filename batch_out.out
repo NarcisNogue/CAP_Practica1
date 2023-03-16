@@ -1,4 +1,4 @@
-cpu-bind=MASK - clus12, task  0  0 [34416]: mask 0xfff set
+cpu-bind=MASK - clus12, task  0  0 [49133]: mask 0xfff set
 ./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
 ./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
 TEST = 1
@@ -7,16 +7,44 @@ WIDTH : 3840
 HEIGHT: 2160
 LENGHT: 8294400
 
-STEP 1: K = 4
+STEP 1: K = 32
 STEP 2: Init centroids
 STEP 3: Updating centroids
 
-Number of K-Means iterations: 22
+Number of K-Means iterations: 53
 
-Centroide 0 : R[37]	G[30]	B[25]
-Centroide 1 : R[160]	G[144]	B[123]
-Centroide 2 : R[218]	G[213]	B[201]
-Centroide 3 : R[97]	G[81]	B[63]
+Centroide 0 : R[23]	G[20]	B[17]
+Centroide 1 : R[29]	G[37]	B[36]
+Centroide 2 : R[193]	G[99]	B[33]
+Centroide 3 : R[76]	G[29]	B[14]
+Centroide 4 : R[196]	G[194]	B[185]
+Centroide 5 : R[220]	G[216]	B[206]
+Centroide 6 : R[13]	G[10]	B[8]
+Centroide 7 : R[120]	G[155]	B[161]
+Centroide 8 : R[52]	G[53]	B[48]
+Centroide 9 : R[133]	G[126]	B[114]
+Centroide 10 : R[154]	G[111]	B[68]
+Centroide 11 : R[54]	G[40]	B[29]
+Centroide 12 : R[127]	G[53]	B[23]
+Centroide 13 : R[178]	G[133]	B[96]
+Centroide 14 : R[89]	G[87]	B[79]
+Centroide 15 : R[156]	G[199]	B[210]
+Centroide 16 : R[104]	G[108]	B[102]
+Centroide 17 : R[39]	G[28]	B[19]
+Centroide 18 : R[127]	G[87]	B[53]
+Centroide 19 : R[78]	G[53]	B[36]
+Centroide 20 : R[244]	G[241]	B[234]
+Centroide 21 : R[156]	G[146]	B[134]
+Centroide 22 : R[68]	G[70]	B[63]
+Centroide 23 : R[224]	G[174]	B[72]
+Centroide 24 : R[24]	G[119]	B[121]
+Centroide 25 : R[35]	G[9]	B[6]
+Centroide 26 : R[99]	G[71]	B[47]
+Centroide 27 : R[231]	G[203]	B[160]
+Centroide 28 : R[174]	G[169]	B[161]
+Centroide 29 : R[8]	G[52]	B[85]
+Centroide 30 : R[205]	G[165]	B[130]
+Centroide 31 : R[122]	G[104]	B[82]
 
-Time to Kmeans is 0 seconds and 380569 microseconds
-Checksum value = 12689895
+Time to Kmeans is 5 seconds and 552419 microseconds
+Checksum value = 73560427

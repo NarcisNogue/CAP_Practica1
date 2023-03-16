@@ -68,7 +68,6 @@ void kmeans(uint8_t k, cluster* centroids, uint32_t num_pixels, rgb* pixels){
 		// Find closest cluster for each pixel
 		#pragma omp parallel
 		{
-			//#pragma omp for
 			for(j = 0; j < k; j++) 
 			{
 				centroids[j].mean_r = 0;
@@ -79,7 +78,6 @@ void kmeans(uint8_t k, cluster* centroids, uint32_t num_pixels, rgb* pixels){
    
 			cluster* centroids_private;
 			centroids_private = malloc(k * sizeof(cluster));
-			//#pragma omp parallel for
 			for(j = 0; j < k; j++) 
 			{
 				centroids_private[j].mean_r = 0;
@@ -107,8 +105,7 @@ void kmeans(uint8_t k, cluster* centroids, uint32_t num_pixels, rgb* pixels){
 				}
 			}
 			free(centroids_private);
-			// Update centroids & check stop condition (TODO: is overhead worth it?)
-			// #pragma omp for private(changed) reduction(|:condition)
+			#pragma omp barrier
 		}
 		for(j = 0; j < k; j++) 
 		{

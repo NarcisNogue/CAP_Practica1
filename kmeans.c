@@ -49,7 +49,7 @@ void kmeans(uint8_t k, cluster* centroids, uint32_t num_pixels, rgb* pixels){
 	
 	// Init centroids	
 	printf("STEP 2: Init centroids\n");
-	#pragma omp parallel for
+	// #pragma omp parallel for
 	for(i = 0; i < k; i++) 
 	{
 		random_num = rand() % num_pixels;
@@ -61,68 +61,70 @@ void kmeans(uint8_t k, cluster* centroids, uint32_t num_pixels, rgb* pixels){
 	// K-means iterative procedures start
 	printf("STEP 3: Updating centroids\n\n");
 	i = 0;
+	int max_threads = omp_get_max_threads();
+	cluster* centroids_private;
+	centroids_private = malloc(k * max_threads * sizeof(cluster));
 	do 
   	{
 		condition = 0;
 		// Reset centroids
 		// Find closest cluster for each pixel
-		#pragma omp parallel
-		{
-			for(j = 0; j < k; j++) 
-			{
-				centroids[j].mean_r = 0;
-				centroids[j].mean_g = 0;
-				centroids[j].mean_b = 0;
-				centroids[j].num_points = 0;
-			}
-   
-			cluster* centroids_private;
-			centroids_private = malloc(k * sizeof(cluster));
-			for(j = 0; j < k; j++) 
-			{
-				centroids_private[j].mean_r = 0;
-				centroids_private[j].mean_g = 0;
-				centroids_private[j].mean_b = 0;
-				centroids_private[j].num_points = 0;
-			}
-			#pragma omp for private(closest)
-			for(j = 0; j < num_pixels; j++) 
-			{
-				closest = find_closest_centroid(&pixels[j], centroids, k);
-				centroids_private[closest].mean_r += pixels[j].r;
-				centroids_private[closest].mean_g += pixels[j].g;
-				centroids_private[closest].mean_b += pixels[j].b;
-				centroids_private[closest].num_points++;
-			}
-			#pragma omp critical
-			{
-				for(j = 0; j < k; j++)
-				{
-					centroids[j].mean_r += centroids_private[j].mean_r;
-					centroids[j].mean_g += centroids_private[j].mean_g;
-					centroids[j].mean_b += centroids_private[j].mean_b;
-					centroids[j].num_points += centroids_private[j].num_points;
-				}
-			}
-			free(centroids_private);
-			#pragma omp barrier
-		}
 		for(j = 0; j < k; j++) 
 		{
-			if(centroids[j].num_points != 0) 
+			centroids[j].mean_r = 0;
+			centroids[j].mean_g = 0;
+			centroids[j].mean_b = 0;
+			centroids[j].num_points = 0;
+		}
+
+		for(j = 0; j < k * max_threads; j++) 
+		{
+			centroids_private[j].mean_r = 0;
+			centroids_private[j].mean_g = 0;
+			centroids_private[j].mean_b = 0;
+			centroids_private[j].num_points = 0;
+		}
+		int th_num;
+		#pragma omp parallel for private(closest, th_num)
+		for(j = 0; j < num_pixels; j++) 
+		{
+			th_num = omp_get_thread_num();
+			// printf("%d\n", th_num);
+			closest = find_closest_centroid(&pixels[j], centroids, k);
+			centroids_private[k*th_num + closest].mean_r += pixels[j].r;
+			centroids_private[k*th_num + closest].mean_g += pixels[j].g;
+			centroids_private[k*th_num + closest].mean_b += pixels[j].b;
+			centroids_private[k*th_num + closest].num_points++;
+		}
+		for(i = 0; i < k; i++)
+		{
+			for(j = 0; j < max_threads; j++)
 			{
-				centroids[j].mean_r = centroids[j].mean_r/centroids[j].num_points;
-				centroids[j].mean_g = centroids[j].mean_g/centroids[j].num_points;
-				centroids[j].mean_b = centroids[j].mean_b/centroids[j].num_points;
-				changed = centroids[j].mean_r != centroids[j].r || centroids[j].mean_g != centroids[j].g || centroids[j].mean_b != centroids[j].b;
-				condition = condition || changed;
-				centroids[j].r = centroids[j].mean_r;
-				centroids[j].g = centroids[j].mean_g;
-				centroids[j].b = centroids[j].mean_b;
+				centroids[i].mean_r += centroids_private[j*k + i].mean_r;
+				centroids[i].mean_g += centroids_private[j*k + i].mean_g;
+				centroids[i].mean_b += centroids_private[j*k + i].mean_b;
+				centroids[i].num_points += centroids_private[j*k + i].num_points;
 			}
+		}
+	
+		for(j = 0; j < k; j++) 
+		{
+			if(centroids[j].num_points == 0) 
+			{
+				continue;
+			}
+			centroids[j].mean_r = centroids[j].mean_r/centroids[j].num_points;
+			centroids[j].mean_g = centroids[j].mean_g/centroids[j].num_points;
+			centroids[j].mean_b = centroids[j].mean_b/centroids[j].num_points;
+			changed = centroids[j].mean_r != centroids[j].r || centroids[j].mean_g != centroids[j].g || centroids[j].mean_b != centroids[j].b;
+			condition = condition || changed;
+			centroids[j].r = centroids[j].mean_r;
+			centroids[j].g = centroids[j].mean_g;
+			centroids[j].b = centroids[j].mean_b;
 		}
 		i++;
 	} while(condition);
+	free(centroids_private);
 	printf("Number of K-Means iterations: %d\n\n", i);
 }
 

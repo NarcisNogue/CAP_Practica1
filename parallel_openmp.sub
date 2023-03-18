@@ -11,5 +11,5 @@ gcc -fopenmp -lm -Ofast kmeans.c -std=c99 -o kmeans    # compile
 export OMP_NUM_THREADS=12                        # set number of threads
 
 # ./kmeans exec 32 imagen.bmp output.bmp # execute with perf profiler exec
-./kmeans test 32 imagen.bmp            # execute with perf profiler test
+./kmeans test 64 imagen.bmp            # execute with perf profiler test
 # perf report

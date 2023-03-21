@@ -1,0 +1,24 @@
+TEST = 1
+
+WIDTH : 3840
+HEIGHT: 2160
+LENGHT: 8294400
+
+STEP 1: K = 8
+STEP 2: Init centroids
+STEP 3: Updating centroids
+
+Max number of threads: 8
+Number of K-Means iterations: 51
+
+Centroide 0 : R[49]	G[46]	B[41]
+Centroide 1 : R[90]	G[66]	B[48]
+Centroide 2 : R[194]	G[186]	B[169]
+Centroide 3 : R[98]	G[102]	B[92]
+Centroide 4 : R[155]	G[105]	B[61]
+Centroide 5 : R[26]	G[19]	B[15]
+Centroide 6 : R[229]	G[226]	B[216]
+Centroide 7 : R[154]	G[142]	B[126]
+
+Time to Kmeans is 6 seconds and 41475 microseconds, 6.041475
+Checksum value = 22329779

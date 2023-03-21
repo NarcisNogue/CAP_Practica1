@@ -1,0 +1,110 @@
+cpu-bind=MASK - clus12, task  0  0 [53478]: mask 0xfff set
+Running tests for 2 threads
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+TEST = 1
+
+WIDTH : 3840
+HEIGHT: 2160
+LENGHT: 8294400
+
+STEP 1: K = 1
+STEP 2: Init centroids
+STEP 3: Updating centroids
+
+Max number of threads: 12
+Number of K-Means iterations: 2
+
+Centroide 0 : R[119]	G[109]	B[96]
+
+Time to Kmeans is 0 seconds and 276386 microseconds
+Checksum value = 1245216
+
+ Performance counter stats for './kmeans test 1 imagen.bmp':
+
+       2578,605738      task-clock (msec)         #    4,355 CPUs utilized          
+                54      context-switches          #    0,021 K/sec                  
+                12      cpu-migrations            #    0,005 K/sec                  
+               957      page-faults               #    0,371 K/sec                  
+     6.664.219.203      cycles                    #    2,584 GHz                      (50,39%)
+        59.749.687      stalled-cycles-frontend   #    0,90% frontend cycles idle     (50,14%)
+     5.460.559.256      stalled-cycles-backend    #  81,94% backend cycles idle       (49,93%)
+     2.455.822.925      instructions              #    0,37  insn per cycle         
+                                                  #    2,22  stalled cycles per insn  (50,16%)
+       433.849.248      branches                  #  168,250 M/sec                    (50,35%)
+           130.164      branch-misses             #    0,03% of all branches          (50,56%)
+
+       0,592078069 seconds time elapsed
+
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)

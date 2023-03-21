@@ -1,0 +1,50 @@
+cpu-bind=MASK - clus12, task  0  0 [52896]: mask 0xfff set
+Running tests for 32 threads
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+TEST = 1
+
+WIDTH : 3840
+HEIGHT: 2160
+LENGHT: 8294400
+
+STEP 1: K = 1
+STEP 2: Init centroids
+STEP 3: Updating centroids
+
+Number of K-Means iterations: 2
+
+Centroide 0 : R[119]	G[109]	B[96]
+
+Time to Kmeans is 0 seconds and 276248 microseconds
+Checksum value = 1245216
+
+ Performance counter stats for './kmeans test 1 imagen.bmp':
+
+       2568,933723      task-clock (msec)         #    4,123 CPUs utilized          
+                50      context-switches          #    0,019 K/sec                  
+                14      cpu-migrations            #    0,005 K/sec                  
+               957      page-faults               #    0,373 K/sec                  
+     6.643.855.972      cycles                    #    2,586 GHz                      (50,29%)
+        55.830.635      stalled-cycles-frontend   #    0,84% frontend cycles idle     (50,20%)
+     5.462.572.326      stalled-cycles-backend    #  82,22% backend cycles idle       (49,98%)
+     2.487.459.404      instructions              #    0,37  insn per cycle         
+                                                  #    2,20  stalled cycles per insn  (49,99%)
+       442.100.696      branches                  #  172,095 M/sec                    (50,09%)
+           143.513      branch-misses             #    0,03% of all branches          (50,20%)
+
+       0,623077217 seconds time elapsed
+
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+slurmstepd: error: *** JOB 151888 ON clus12 CANCELLED AT 2023-03-18T19:43:02 ***

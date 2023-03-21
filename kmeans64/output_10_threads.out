@@ -1,0 +1,80 @@
+TEST = 1
+
+WIDTH : 3840
+HEIGHT: 2160
+LENGHT: 8294400
+
+STEP 1: K = 64
+STEP 2: Init centroids
+STEP 3: Updating centroids
+
+Max number of threads: 10
+Number of K-Means iterations: 196
+
+Centroide 0 : R[12]	G[34]	B[36]
+Centroide 1 : R[54]	G[37]	B[26]
+Centroide 2 : R[155]	G[173]	B[188]
+Centroide 3 : R[27]	G[25]	B[24]
+Centroide 4 : R[117]	G[61]	B[22]
+Centroide 5 : R[6]	G[6]	B[4]
+Centroide 6 : R[173]	G[215]	B[223]
+Centroide 7 : R[101]	G[95]	B[86]
+Centroide 8 : R[125]	G[102]	B[70]
+Centroide 9 : R[165]	G[79]	B[27]
+Centroide 10 : R[127]	G[124]	B[115]
+Centroide 11 : R[57]	G[61]	B[57]
+Centroide 12 : R[31]	G[19]	B[13]
+Centroide 13 : R[163]	G[155]	B[144]
+Centroide 14 : R[67]	G[48]	B[34]
+Centroide 15 : R[213]	G[120]	B[33]
+Centroide 16 : R[98]	G[80]	B[66]
+Centroide 17 : R[177]	G[144]	B[111]
+Centroide 18 : R[124]	G[144]	B[150]
+Centroide 19 : R[103]	G[69]	B[46]
+Centroide 20 : R[17]	G[66]	B[53]
+Centroide 21 : R[156]	G[140]	B[63]
+Centroide 22 : R[51]	G[49]	B[44]
+Centroide 23 : R[33]	G[149]	B[137]
+Centroide 24 : R[87]	G[102]	B[45]
+Centroide 25 : R[219]	G[188]	B[160]
+Centroide 26 : R[71]	G[73]	B[67]
+Centroide 27 : R[35]	G[32]	B[30]
+Centroide 28 : R[77]	G[62]	B[51]
+Centroide 29 : R[23]	G[103]	B[92]
+Centroide 30 : R[238]	G[206]	B[134]
+Centroide 31 : R[31]	G[6]	B[4]
+Centroide 32 : R[21]	G[18]	B[18]
+Centroide 33 : R[206]	G[163]	B[128]
+Centroide 34 : R[24]	G[28]	B[5]
+Centroide 35 : R[118]	G[109]	B[97]
+Centroide 36 : R[225]	G[179]	B[75]
+Centroide 37 : R[195]	G[194]	B[185]
+Centroide 38 : R[214]	G[211]	B[203]
+Centroide 39 : R[247]	G[246]	B[240]
+Centroide 40 : R[45]	G[50]	B[13]
+Centroide 41 : R[15]	G[6]	B[4]
+Centroide 42 : R[86]	G[58]	B[35]
+Centroide 43 : R[232]	G[227]	B[217]
+Centroide 44 : R[7]	G[66]	B[125]
+Centroide 45 : R[95]	G[111]	B[108]
+Centroide 46 : R[10]	G[13]	B[11]
+Centroide 47 : R[149]	G[120]	B[94]
+Centroide 48 : R[89]	G[39]	B[23]
+Centroide 49 : R[179]	G[173]	B[162]
+Centroide 50 : R[49]	G[13]	B[7]
+Centroide 51 : R[6]	G[38]	B[83]
+Centroide 52 : R[147]	G[138]	B[126]
+Centroide 53 : R[240]	G[219]	B[181]
+Centroide 54 : R[42]	G[28]	B[19]
+Centroide 55 : R[126]	G[83]	B[51]
+Centroide 56 : R[94]	G[206]	B[197]
+Centroide 57 : R[153]	G[101]	B[64]
+Centroide 58 : R[142]	G[28]	B[21]
+Centroide 59 : R[19]	G[13]	B[10]
+Centroide 60 : R[191]	G[120]	B[84]
+Centroide 61 : R[80]	G[87]	B[82]
+Centroide 62 : R[39]	G[40]	B[39]
+Centroide 63 : R[71]	G[25]	B[11]
+
+Time to Kmeans is 49 seconds and 544330 microseconds, 49.544330
+Checksum value = 124269810

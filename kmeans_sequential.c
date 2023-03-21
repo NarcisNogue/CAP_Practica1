@@ -1,5 +1,4 @@
 #include "kmeanslib.c"
-#include <omp.h>
 
 /*
  * Return the index number of the closest centroid to a given pixel (p)
@@ -12,7 +11,7 @@
  */
 uint8_t find_closest_centroid(rgb* p, cluster* centroids, uint8_t num_clusters){
 	uint32_t min = UINT32_MAX;
-	uint32_t dis;
+	uint32_t dis[num_clusters];
 	uint8_t closest = 0, j;
 	int16_t diffR, diffG, diffB;	
 
@@ -22,11 +21,11 @@ uint8_t find_closest_centroid(rgb* p, cluster* centroids, uint8_t num_clusters){
 		diffG = centroids[j].g - p->g;
 		diffB = centroids[j].b - p->b;
 		// No sqrt required.
-		dis = diffR*diffR + diffG*diffG + diffB*diffB;
+		dis[j] = diffR*diffR + diffG*diffG + diffB*diffB;
 		
-		if(dis < min) 
+		if(dis[j] < min) 
 		{
-			min = dis;
+			min = dis[j];
 			closest = j;
 		}
 	}
@@ -49,7 +48,6 @@ void kmeans(uint8_t k, cluster* centroids, uint32_t num_pixels, rgb* pixels){
 	
 	// Init centroids	
 	printf("STEP 2: Init centroids\n");
-	// #pragma omp parallel for
 	for(i = 0; i < k; i++) 
 	{
 		random_num = rand() % num_pixels;
@@ -61,64 +59,36 @@ void kmeans(uint8_t k, cluster* centroids, uint32_t num_pixels, rgb* pixels){
 	// K-means iterative procedures start
 	printf("STEP 3: Updating centroids\n\n");
 	i = 0;
-
-	// Create a separate centroids structure for each thread to avoid collisions
-	int max_threads = omp_get_max_threads();
-	printf("Max number of threads: %d\n", max_threads);
-	cluster* centroids_private;
-	centroids_private = malloc(k * max_threads * sizeof(cluster));
 	do 
   	{
-		condition = 0;
 		// Reset centroids
-		// Find closest cluster for each pixel
 		for(j = 0; j < k; j++) 
-		{
+    	{
 			centroids[j].mean_r = 0;
 			centroids[j].mean_g = 0;
 			centroids[j].mean_b = 0;
 			centroids[j].num_points = 0;
 		}
-
-		for(j = 0; j < k * max_threads; j++) 
-		{
-			centroids_private[j].mean_r = 0;
-			centroids_private[j].mean_g = 0;
-			centroids_private[j].mean_b = 0;
-			centroids_private[j].num_points = 0;
-		}
-		int th_num;
-		#pragma omp parallel for private(closest, th_num)
+   
+		// Find closest cluster for each pixel
 		for(j = 0; j < num_pixels; j++) 
-		{
-			th_num = omp_get_thread_num();
+    	{
 			closest = find_closest_centroid(&pixels[j], centroids, k);
-			// Each thread is assigned the centroids from (k*th_num) to (k*th_num + k - 1)
-			centroids_private[k*th_num + closest].mean_r += pixels[j].r;
-			centroids_private[k*th_num + closest].mean_g += pixels[j].g;
-			centroids_private[k*th_num + closest].mean_b += pixels[j].b;
-			centroids_private[k*th_num + closest].num_points++;
+			centroids[closest].mean_r += pixels[j].r;
+			centroids[closest].mean_g += pixels[j].g;
+			centroids[closest].mean_b += pixels[j].b;
+			centroids[closest].num_points++;
 		}
 
-		// Merge all the private centroids into the main centroids.
-		#pragma omp parallel for
-		for(i = 0; i < k; i++)
-		{
-			for(j = 0; j < max_threads; j++)
-			{
-				centroids[i].mean_r += centroids_private[j*k + i].mean_r;
-				centroids[i].mean_g += centroids_private[j*k + i].mean_g;
-				centroids[i].mean_b += centroids_private[j*k + i].mean_b;
-				centroids[i].num_points += centroids_private[j*k + i].num_points;
-			}
-		}
-	
+		// Update centroids & check stop condition
+		condition = 0;
 		for(j = 0; j < k; j++) 
 		{
 			if(centroids[j].num_points == 0) 
 			{
 				continue;
 			}
+
 			centroids[j].mean_r = centroids[j].mean_r/centroids[j].num_points;
 			centroids[j].mean_g = centroids[j].mean_g/centroids[j].num_points;
 			centroids[j].mean_b = centroids[j].mean_b/centroids[j].num_points;
@@ -128,9 +98,9 @@ void kmeans(uint8_t k, cluster* centroids, uint32_t num_pixels, rgb* pixels){
 			centroids[j].g = centroids[j].mean_g;
 			centroids[j].b = centroids[j].mean_b;
 		}
+		
 		i++;
 	} while(condition);
-	free(centroids_private);
 	printf("Number of K-Means iterations: %d\n\n", i);
 }
 
@@ -221,7 +191,6 @@ int main(int argc, char *argv[]) {
 				pixel.r = centroids[closest].r;
 				pixel.g = centroids[closest].g;
 				pixel.b = centroids[closest].b;
-				//printf("%d, %d, %d\n", pixel.r, pixel.g, pixel.b);
 				
 				if(fwrite(&pixel, sizeof(uint8_t), 3, fp) != 3){
 					printf("Error writing BMP.\n");

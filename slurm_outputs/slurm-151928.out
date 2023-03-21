@@ -1,0 +1,40 @@
+cpu-bind=MASK - clus12, task  0  0 [6916]: mask 0xfff set
+Running tests for 2 threads
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+TEST = 1
+
+WIDTH : 3840
+HEIGHT: 2160
+LENGHT: 8294400
+
+STEP 1: K = 1
+STEP 2: Init centroids
+STEP 3: Updating centroids
+
+Max number of threads: 12
+Number of K-Means iterations: 2
+
+Centroide 0 : R[119]	G[109]	B[96]
+
+Time to Kmeans is 0 seconds and 274593 microseconds, 0.274593
+Checksum value = 1245216
+
+ Performance counter stats for './kmeans test 1 imagen.bmp':
+
+       2567,757096      task-clock (msec)         #    4,323 CPUs utilized          
+                51      context-switches          #    0,020 K/sec                  
+                11      cpu-migrations            #    0,004 K/sec                  
+               957      page-faults               #    0,373 K/sec                  
+     6.647.148.264      cycles                    #    2,589 GHz                      (50,23%)
+        52.653.671      stalled-cycles-frontend   #    0,79% frontend cycles idle     (50,22%)
+     5.468.103.129      stalled-cycles-backend    #  82,26% backend cycles idle       (49,99%)
+     2.478.759.208      instructions              #    0,37  insn per cycle         
+                                                  #    2,21  stalled cycles per insn  (50,00%)
+       444.105.868      branches                  #  172,955 M/sec                    (50,06%)
+           148.983      branch-misses             #    0,03% of all branches          (50,35%)
+
+       0,593925425 seconds time elapsed
+
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)

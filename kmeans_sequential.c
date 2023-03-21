@@ -11,7 +11,7 @@
  */
 uint8_t find_closest_centroid(rgb* p, cluster* centroids, uint8_t num_clusters){
 	uint32_t min = UINT32_MAX;
-	uint32_t dis[num_clusters];
+	uint32_t dis;
 	uint8_t closest = 0, j;
 	int16_t diffR, diffG, diffB;	
 
@@ -21,11 +21,11 @@ uint8_t find_closest_centroid(rgb* p, cluster* centroids, uint8_t num_clusters){
 		diffG = centroids[j].g - p->g;
 		diffB = centroids[j].b - p->b;
 		// No sqrt required.
-		dis[j] = diffR*diffR + diffG*diffG + diffB*diffB;
+		dis = diffR*diffR + diffG*diffG + diffB*diffB;
 		
-		if(dis[j] < min) 
+		if(dis < min) 
 		{
-			min = dis[j];
+			min = dis;
 			closest = j;
 		}
 	}

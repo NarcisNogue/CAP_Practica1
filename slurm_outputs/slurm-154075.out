@@ -1,0 +1,50 @@
+cpu-bind=MASK - clus12, task  0  0 [3759]: mask 0xfff set
+Running tests for 1 threads
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+TEST = 1
+
+WIDTH : 3840
+HEIGHT: 2160
+LENGHT: 8294400
+
+STEP 1: K = 1
+STEP 2: Init centroids
+STEP 3: Updating centroids
+
+Max number of threads: 12
+Number of K-Means iterations: 2
+
+Centroide 0 : R[119]	G[109]	B[96]
+
+Time to Kmeans is 0 seconds and 285764 microseconds, 0.285764
+Checksum value = 1245216
+
+ Performance counter stats for './kmeans test 1 imagen.bmp':
+
+       2571,371016      task-clock (msec)         #    1,962 CPUs utilized          
+                50      context-switches          #    0,019 K/sec                  
+                16      cpu-migrations            #    0,006 K/sec                  
+               957      page-faults               #    0,372 K/sec                  
+     6.654.953.588      cycles                    #    2,588 GHz                      (66,85%)
+        55.851.642      stalled-cycles-frontend   #    0,84% frontend cycles idle     (66,96%)
+     5.483.401.086      stalled-cycles-backend    #  82,40% backend cycles idle       (66,70%)
+     2.471.166.002      instructions              #    0,37  insn per cycle         
+                                                  #    2,22  stalled cycles per insn  (66,50%)
+       439.993.295      branches                  #  171,112 M/sec                    (66,67%)
+           144.114      branch-misses             #    0,03% of all branches          (66,70%)
+
+       1,310383441 seconds time elapsed
+
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)

@@ -6,12 +6,13 @@
 #SBATCH --partition=nodo.q
 #SBATCH --exclusive
 
+module load gcc/8.2.0
 
 gcc -fopenmp -Ofast kmeans.c -std=c99 -o kmeans    # compile parallel
 gcc -fopenmp -Ofast kmeans_sequential.c -std=c99 -o kmeans_sequential    # compile sequential
 
 #2 4 6 8 10 12
-num_threads=(10 12)
+num_threads=(1 2 4 6 8 10 12)
 
 echo Running tests for ${num_threads} threads
 
@@ -20,12 +21,12 @@ echo Running tests for ${num_threads} threads
 export OMP_NUM_THREADS=12                       # set number of threads
 perf stat ./kmeans test 1 imagen.bmp            # execute with perf profiler test
 
-# ./kmeans_sequential test 2 imagen.bmp > ./kmeans2/output_sequential.out
-# ./kmeans_sequential test 4 imagen.bmp > ./kmeans4/output_sequential.out
-# ./kmeans_sequential test 8 imagen.bmp > ./kmeans8/output_sequential.out
-# ./kmeans_sequential test 16 imagen.bmp > ./kmeans16/output_sequential.out
-# ./kmeans_sequential test 32 imagen.bmp > ./kmeans32/output_sequential.out
-# ./kmeans_sequential test 64 imagen.bmp > ./kmeans64/output_sequential.out
+./kmeans_sequential test 2 imagen.bmp > ./kmeans2/output_sequential.out
+./kmeans_sequential test 4 imagen.bmp > ./kmeans4/output_sequential.out
+./kmeans_sequential test 8 imagen.bmp > ./kmeans8/output_sequential.out
+./kmeans_sequential test 16 imagen.bmp > ./kmeans16/output_sequential.out
+./kmeans_sequential test 32 imagen.bmp > ./kmeans32/output_sequential.out
+./kmeans_sequential test 64 imagen.bmp > ./kmeans64/output_sequential.out
 
 for current_num_threads in ${num_threads[@]}; do
     export OMP_NUM_THREADS=${current_num_threads}                       # set number of threads

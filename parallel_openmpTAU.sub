@@ -1,0 +1,22 @@
+#!/bin/bash
+#SBATCH --output=slurmTAUoutputs/slurm-%j.out
+#SBATCH --job-name=openmpTAU
+#SBATCH -N 1
+##SBATCH -n 1
+#SBATCH --partition=nodo.q
+#SBATCH --exclusive
+
+#Configure TAU
+module load gcc/8.2.0
+module load tau/2.29
+export TAU_MAKEFILE=/soft/tau-2.29/x86_64/lib/Makefile.tau-openmp-opari
+export TAU_OPTIONS=-optCompInst
+
+export TAU_PROFILE=1
+export TAU_TRACE=0
+
+tau_cc.sh -o kmeans_tau kmeans.c
+
+export OMP_NUM_THREADS=12                       # set number of threads
+./kmeans_tau test 2 imagen.bmp
+

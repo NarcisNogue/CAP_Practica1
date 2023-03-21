@@ -1,0 +1,49 @@
+cpu-bind=MASK - clus01, task  0  0 [61279]: mask 0xfff set
+
+
+Debug: Parsing with Opari2
+Executing> /soft/tau-2.29/x86_64/bin/opari2 --nosrc kmeans.c kmeans.pomp.c
+Debug: Using compiler-based instrumentation
+
+
+Debug: Compiling (Individually) with Instrumented Code
+Executing> /soft/gcc-8.2.0/bin/gcc -I. -c kmeans.pomp.c -g -DPROFILING_ON -DTAU_GNU -DTAU_DOT_H_LESS_HEADERS -DTAU_LINUX_TIMERS -DTAU_LARGEFILE -D_LARGEFILE64_SOURCE -DTAU_BFD -DHAVE_GNU_DEMANGLE -DHAVE_TR1_HASH_MAP -DTAU_SS_ALLOC_SUPPORT -DEBS_CLOCK_RES=1 -DTAU_STRSIGNAL_OK -DTAU_TRACK_LD_LOADER -DTAU_OPENMP_NESTED -DTAU_USE_TLS -DTAU_ELF_BFD -fopenmp -DTAU_OPENMP -DTAU_UNIFY -I/include -I/soft/tau-2.29/include -o kmeans.pomp.o -g -finstrument-functions -finstrument-functions-exclude-file-list=/usr/include
+
+
+Debug: Removing pompregions.c
+Executing> /bin/rm -f pompregions.c
+
+
+Debug: Creating pompregions.c
+Executing> /usr/bin/nm -B kmeans.pomp.o | /usr/bin/grep -E -i POMP2_Init_reg | gawk -f /soft/tau-2.29/x86_64/bin/pomp2-parse-init-regions.awk > pompregions.c
+
+
+Debug: Compiling pompregions.c
+Executing> gcc -c -I/include -I/soft/tau-2.29/include -DPROFILING_ON -DTAU_GNU -DTAU_DOT_H_LESS_HEADERS -DTAU_LINUX_TIMERS -DTAU_LARGEFILE -D_LARGEFILE64_SOURCE -DTAU_BFD -DHAVE_GNU_DEMANGLE -DHAVE_TR1_HASH_MAP -DTAU_SS_ALLOC_SUPPORT -DEBS_CLOCK_RES=1 -DTAU_STRSIGNAL_OK -DTAU_TRACK_LD_LOADER -DTAU_OPENMP_NESTED -DTAU_USE_TLS -DTAU_ELF_BFD -fopenmp -DTAU_OPENMP -DTAU_UNIFY pompregions.c
+
+
+Debug: Linking (Together) object files
+Executing> /soft/gcc-8.2.0/bin/gcc pompregions.o kmeans.pomp.o -L/soft/tau-2.29/x86_64/lib -ltau-openmp-opari -L/soft/tau-2.29/x86_64/binutils-2.23.2/lib -L/soft/tau-2.29/x86_64/binutils-2.23.2/lib64 -Wl,-rpath,/soft/tau-2.29/x86_64/binutils-2.23.2/lib -Wl,-rpath,/soft/tau-2.29/x86_64/binutils-2.23.2/lib64 -lbfd -liberty -lz -ldl -Wl,--export-dynamic -lrt -ldl -ldl -lm -L/soft/gcc-8.2.0/lib/gcc/x86_64-pc-linux-gnu/8.2.0/ -lstdc++ -lgcc_s -L/soft/tau-2.29/x86_64/lib/static-openmp-opari -fopenmp -g -o kmeans_tau
+
+
+Debug: Removing pompregions.c pompregions.o kmeans.c.opari.inc
+Executing> /bin/rm -f pompregions.c pompregions.o kmeans.c.opari.inc
+
+TEST = 1
+
+WIDTH : 3840
+HEIGHT: 2160
+LENGHT: 8294400
+
+STEP 1: K = 2
+STEP 2: Init centroids
+STEP 3: Updating centroids
+
+Max number of threads: 12
+Number of K-Means iterations: 9
+
+Centroide 0 : R[68]	G[56]	B[45]
+Centroide 1 : R[196]	G[186]	B[171]
+
+Time to Kmeans is 2 seconds and 752107 microseconds, 2.752107
+Checksum value = 6405336

@@ -1,0 +1,43 @@
+cpu-bind=MASK - clus12, task  0  0 [22438]: mask 0xfff set
+Loading gcc/8.2.0
+  ERROR: gcc/8.2.0 cannot be loaded due to a conflict.
+    HINT: Might try "module unload gcc" first.
+Running tests for 4 threads
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+TEST = 1
+
+WIDTH : 3840
+HEIGHT: 2160
+LENGHT: 8294400
+
+STEP 1: K = 1
+STEP 2: Init centroids
+STEP 3: Updating centroids
+
+Max number of threads: 12
+Number of K-Means iterations: 2
+
+Centroide 0 : R[119]	G[109]	B[96]
+
+Time to Kmeans is 0 seconds and 276743 microseconds, 0.276743
+Checksum value = 1245216
+
+ Performance counter stats for './kmeans test 1 imagen.bmp':
+
+       2585,207028      task-clock (msec)         #    2,238 CPUs utilized          
+                87      context-switches          #    0,034 K/sec                  
+                17      cpu-migrations            #    0,007 K/sec                  
+               958      page-faults               #    0,371 K/sec                  
+     6.685.509.922      cycles                    #    2,586 GHz                      (66,95%)
+        54.444.222      stalled-cycles-frontend   #    0,81% frontend cycles idle     (66,69%)
+     5.485.352.271      stalled-cycles-backend    #  82,05% backend cycles idle       (66,68%)
+     2.500.239.033      instructions              #    0,37  insn per cycle         
+                                                  #    2,19  stalled cycles per insn  (66,76%)
+       439.066.234      branches                  #  169,838 M/sec                    (66,92%)
+           184.329      branch-misses             #    0,04% of all branches          (66,96%)
+
+       1,155314482 seconds time elapsed
+
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)
+./kmeans: /soft/gcc-10.2.0/lib64/libgomp.so.1: no version information available (required by ./kmeans)

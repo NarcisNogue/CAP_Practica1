@@ -20,5 +20,5 @@ Centroide 5 : R[26]	G[19]	B[15]
 Centroide 6 : R[229]	G[226]	B[216]
 Centroide 7 : R[154]	G[142]	B[126]
 
-Time to Kmeans is 14 seconds and 314893 microseconds, 14.314893
+Time to Kmeans is 11 seconds and 742849 microseconds, 11.742849
 Checksum value = 22329779

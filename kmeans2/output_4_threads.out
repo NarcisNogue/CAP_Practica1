@@ -14,5 +14,5 @@ Number of K-Means iterations: 9
 Centroide 0 : R[68]	G[56]	B[45]
 Centroide 1 : R[196]	G[186]	B[171]
 
-Time to Kmeans is 2 seconds and 482555 microseconds, 2.482555
+Time to Kmeans is 1 seconds and 680414 microseconds, 1.680414
 Checksum value = 6405336

@@ -1,0 +1,84 @@
+cpu-bind=MASK - clus11, task  0  0 [27673]: mask 0xfff set
+Running tests for 1 threads
+TEST = 1
+
+WIDTH : 3840
+HEIGHT: 2160
+LENGHT: 8294400
+
+STEP 1: K = 1
+STEP 2: Init centroids
+STEP 3: Updating centroids
+
+Max number of threads: 12
+Number of K-Means iterations: 2
+
+Centroide 0 : R[119]	G[109]	B[96]
+
+Time to Kmeans is 0 seconds and 157404 microseconds, 0.157404
+Checksum value = 1245216
+
+ Performance counter stats for './kmeans test 1 imagen.bmp':
+
+       1517,177162      task-clock (msec)         #    2,970 CPUs utilized          
+                54      context-switches          #    0,036 K/sec                  
+                14      cpu-migrations            #    0,009 K/sec                  
+             6.573      page-faults               #    0,004 M/sec                  
+     3.927.011.295      cycles                    #    2,588 GHz                      (66,42%)
+        50.484.284      stalled-cycles-frontend   #    1,29% frontend cycles idle     (66,55%)
+     2.924.171.919      stalled-cycles-backend    #  74,46% backend cycles idle       (66,71%)
+     2.047.521.088      instructions              #    0,52  insn per cycle         
+                                                  #    1,43  stalled cycles per insn  (67,16%)
+       430.375.904      branches                  #  283,669 M/sec                    (67,18%)
+           132.121      branch-misses             #    0,03% of all branches          (67,03%)
+
+       0,510877424 seconds time elapsed
+
+Running sequential test for k = 2
+Running sequential test for k = 4
+Running sequential test for k = 8
+Running sequential test for k = 16
+Running sequential test for k = 32
+Running sequential test for k = 64
+Running test with 1 test for k = 2
+Running test with 1 test for k = 4
+Running test with 1 test for k = 8
+Running test with 1 test for k = 16
+Running test with 1 test for k = 32
+Running test with 1 test for k = 64
+Running test with 2 test for k = 2
+Running test with 2 test for k = 4
+Running test with 2 test for k = 8
+Running test with 2 test for k = 16
+Running test with 2 test for k = 32
+Running test with 2 test for k = 64
+Running test with 4 test for k = 2
+Running test with 4 test for k = 4
+Running test with 4 test for k = 8
+Running test with 4 test for k = 16
+Running test with 4 test for k = 32
+Running test with 4 test for k = 64
+Running test with 6 test for k = 2
+Running test with 6 test for k = 4
+Running test with 6 test for k = 8
+Running test with 6 test for k = 16
+Running test with 6 test for k = 32
+Running test with 6 test for k = 64
+Running test with 8 test for k = 2
+Running test with 8 test for k = 4
+Running test with 8 test for k = 8
+Running test with 8 test for k = 16
+Running test with 8 test for k = 32
+Running test with 8 test for k = 64
+Running test with 10 test for k = 2
+Running test with 10 test for k = 4
+Running test with 10 test for k = 8
+Running test with 10 test for k = 16
+Running test with 10 test for k = 32
+Running test with 10 test for k = 64
+Running test with 12 test for k = 2
+Running test with 12 test for k = 4
+Running test with 12 test for k = 8
+Running test with 12 test for k = 16
+Running test with 12 test for k = 32
+Running test with 12 test for k = 64

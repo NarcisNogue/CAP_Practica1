@@ -21,19 +21,31 @@ echo Running tests for ${num_threads} threads
 export OMP_NUM_THREADS=12                       # set number of threads
 perf stat ./kmeans test 1 imagen.bmp            # execute with perf profiler test
 
+echo "Running sequential test for k = 2"
 ./kmeans_sequential test 2 imagen.bmp > ./kmeans2/output_sequential.out
+echo "Running sequential test for k = 4"
 ./kmeans_sequential test 4 imagen.bmp > ./kmeans4/output_sequential.out
+echo "Running sequential test for k = 8"
 ./kmeans_sequential test 8 imagen.bmp > ./kmeans8/output_sequential.out
+echo "Running sequential test for k = 16"
 ./kmeans_sequential test 16 imagen.bmp > ./kmeans16/output_sequential.out
+echo "Running sequential test for k = 32"
 ./kmeans_sequential test 32 imagen.bmp > ./kmeans32/output_sequential.out
+echo "Running sequential test for k = 64"
 ./kmeans_sequential test 64 imagen.bmp > ./kmeans64/output_sequential.out
 
 for current_num_threads in ${num_threads[@]}; do
     export OMP_NUM_THREADS=${current_num_threads}                       # set number of threads
+    echo Running test with ${current_num_threads} test for k = 2
     ./kmeans test 2 imagen.bmp > ./kmeans2/output_${current_num_threads}_threads.out
+    echo Running test with ${current_num_threads} test for k = 4
     ./kmeans test 4 imagen.bmp > ./kmeans4/output_${current_num_threads}_threads.out
+    echo Running test with ${current_num_threads} test for k = 8
     ./kmeans test 8 imagen.bmp > ./kmeans8/output_${current_num_threads}_threads.out
+    echo Running test with ${current_num_threads} test for k = 16
     ./kmeans test 16 imagen.bmp > ./kmeans16/output_${current_num_threads}_threads.out
+    echo Running test with ${current_num_threads} test for k = 32
     ./kmeans test 32 imagen.bmp > ./kmeans32/output_${current_num_threads}_threads.out
+    echo Running test with ${current_num_threads} test for k = 64
     ./kmeans test 64 imagen.bmp > ./kmeans64/output_${current_num_threads}_threads.out
 done

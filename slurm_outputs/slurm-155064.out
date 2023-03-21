@@ -34,3 +34,4 @@ Checksum value = 1245216
 
        0,506799231 seconds time elapsed
 
+slurmstepd: error: *** JOB 155064 ON clus12 CANCELLED AT 2023-03-21T19:52:47 ***

@@ -1,0 +1,264 @@
+cpu-bind=MASK - clus12, task  0  0 [23489]: mask 0xfff set
+
+
+Debug: Parsing with Opari2
+Executing> /soft/tau-2.29/x86_64/bin/opari2 --nosrc kmeans.c kmeans.pomp.c
+Debug: Using compiler-based instrumentation
+
+
+Debug: Compiling (Individually) with Instrumented Code
+Executing> /soft/gcc-8.2.0/bin/gcc -I. -c kmeans.pomp.c -g -DPROFILING_ON -DTAU_GNU -DTAU_DOT_H_LESS_HEADERS -DTAU_LINUX_TIMERS -DTAU_LARGEFILE -D_LARGEFILE64_SOURCE -DTAU_BFD -DHAVE_GNU_DEMANGLE -DHAVE_TR1_HASH_MAP -DTAU_SS_ALLOC_SUPPORT -DEBS_CLOCK_RES=1 -DTAU_STRSIGNAL_OK -DTAU_TRACK_LD_LOADER -DTAU_OPENMP_NESTED -DTAU_USE_TLS -DTAU_ELF_BFD -fopenmp -DTAU_OPENMP -DTAU_UNIFY -I/include -I/soft/tau-2.29/include -o kmeans.pomp.o -g -finstrument-functions -finstrument-functions-exclude-file-list=/usr/include
+
+
+Debug: Removing pompregions.c
+Executing> /bin/rm -f pompregions.c
+
+
+Debug: Creating pompregions.c
+Executing> /usr/bin/nm -B kmeans.pomp.o | /usr/bin/grep -E -i POMP2_Init_reg | gawk -f /soft/tau-2.29/x86_64/bin/pomp2-parse-init-regions.awk > pompregions.c
+
+
+Debug: Compiling pompregions.c
+Executing> gcc -c -I/include -I/soft/tau-2.29/include -DPROFILING_ON -DTAU_GNU -DTAU_DOT_H_LESS_HEADERS -DTAU_LINUX_TIMERS -DTAU_LARGEFILE -D_LARGEFILE64_SOURCE -DTAU_BFD -DHAVE_GNU_DEMANGLE -DHAVE_TR1_HASH_MAP -DTAU_SS_ALLOC_SUPPORT -DEBS_CLOCK_RES=1 -DTAU_STRSIGNAL_OK -DTAU_TRACK_LD_LOADER -DTAU_OPENMP_NESTED -DTAU_USE_TLS -DTAU_ELF_BFD -fopenmp -DTAU_OPENMP -DTAU_UNIFY pompregions.c
+
+
+Debug: Linking (Together) object files
+Executing> /soft/gcc-8.2.0/bin/gcc pompregions.o kmeans.pomp.o -L/soft/tau-2.29/x86_64/lib -ltau-openmp-opari -L/soft/tau-2.29/x86_64/binutils-2.23.2/lib -L/soft/tau-2.29/x86_64/binutils-2.23.2/lib64 -Wl,-rpath,/soft/tau-2.29/x86_64/binutils-2.23.2/lib -Wl,-rpath,/soft/tau-2.29/x86_64/binutils-2.23.2/lib64 -lbfd -liberty -lz -ldl -Wl,--export-dynamic -lrt -ldl -ldl -lm -L/soft/gcc-8.2.0/lib/gcc/x86_64-pc-linux-gnu/8.2.0/ -lstdc++ -lgcc_s -L/soft/tau-2.29/x86_64/lib/static-openmp-opari -fopenmp -g -o kmeans_tau
+
+
+Debug: Removing pompregions.c pompregions.o kmeans.c.opari.inc
+Executing> /bin/rm -f pompregions.c pompregions.o kmeans.c.opari.inc
+
+TEST = 1
+
+WIDTH : 3840
+HEIGHT: 2160
+LENGHT: 8294400
+
+STEP 1: K = 2
+STEP 2: Init centroids
+STEP 3: Updating centroids
+
+Max number of threads: 12
+Number of K-Means iterations: 17
+
+Centroide 0 : R[68]	G[56]	B[45]
+Centroide 1 : R[196]	G[187]	B[171]
+
+Time to Kmeans is 4 seconds and 941093 microseconds, 4.941093
+Checksum value = 6438852
+Reading Profile files in profile.*
+
+NODE 0;CONTEXT 0;THREAD 0:
+---------------------------------------------------------------------------------------
+%Time    Exclusive    Inclusive       #Call      #Subrs  Inclusive Name
+              msec   total msec                          usec/call 
+---------------------------------------------------------------------------------------
+100.0           21        5,358           1           1    5358983 .TAU application
+ 99.6            1        5,337           1           3    5337895 main 
+ 92.2         0.36        4,940           1          34    4940963 kmeans 
+ 92.2            1        4,939          17          17     290547 parallelfor (parallel fork/join) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <91, 101>]
+ 92.1        0.329        4,937          17          17     290463 parallelfor (parallel begin/end) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <91, 101>]
+ 92.1        2,363        4,937          17      100018     290444 parallelfor (loop body) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <91, 101>]
+ 45.9        2,457        2,457          17           0     144570 parallelfor (barrier enter/exit) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <91, 101>]
+  7.4          395          395           1           0     395132 read_file 
+  2.2          116          116      100001           0          1 find_closest_centroid [THROTTLED]
+  0.0        0.604            1          17          17         76 parallelfor (parallel fork/join) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <104, 114>]
+  0.0        0.253        0.694          17          17         41 parallelfor (parallel begin/end) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <104, 114>]
+  0.0        0.219        0.441          17          17         26 parallelfor (loop body) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <104, 114>]
+  0.0        0.222        0.222          17           0         13 parallelfor (barrier enter/exit) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <104, 114>]
+  0.0        0.003        0.003           1           0          3 getChecksum 
+
+NODE 0;CONTEXT 0;THREAD 1:
+---------------------------------------------------------------------------------------
+%Time    Exclusive    Inclusive       #Call      #Subrs  Inclusive Name
+              msec   total msec                          usec/call 
+---------------------------------------------------------------------------------------
+100.0           58        4,997           1          34    4997218 .TAU application
+ 98.8          0.1        4,937          17          17     290466 parallelfor (parallel begin/end) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <91, 101>]
+ 98.8        3,752        4,937          17       74580     290460 parallelfor (loop body) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <91, 101>]
+ 16.3          816          816          17           0      48012 parallelfor (barrier enter/exit) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <91, 101>]
+  7.7          368          384       74564           1          5 find_closest_centroid [THROTTLED]
+  0.0        0.348        0.881          17          17         52 parallelfor (parallel begin/end) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <104, 114>]
+  0.0        0.333        0.533          17          17         31 parallelfor (loop body) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <104, 114>]
+  0.0          0.2          0.2          17           0         12 parallelfor (barrier enter/exit) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <104, 114>]
+
+NODE 0;CONTEXT 0;THREAD 2:
+---------------------------------------------------------------------------------------
+%Time    Exclusive    Inclusive       #Call      #Subrs  Inclusive Name
+              msec   total msec                          usec/call 
+---------------------------------------------------------------------------------------
+100.0          162        5,100           1          34    5100697 .TAU application
+ 96.8        0.068        4,937          17          17     290456 parallelfor (parallel begin/end) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <91, 101>]
+ 96.8        4,789        4,937          17       73592     290452 parallelfor (loop body) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <91, 101>]
+  2.7          139          139       73575           0          2 find_closest_centroid [THROTTLED]
+  0.2            8            8          17           0        474 parallelfor (barrier enter/exit) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <91, 101>]
+  0.0        0.194        0.739          17          17         43 parallelfor (parallel begin/end) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <104, 114>]
+  0.0        0.288        0.545          17          17         32 parallelfor (loop body) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <104, 114>]
+  0.0        0.257        0.257          17           0         15 parallelfor (barrier enter/exit) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <104, 114>]
+
+NODE 0;CONTEXT 0;THREAD 3:
+---------------------------------------------------------------------------------------
+%Time    Exclusive    Inclusive       #Call      #Subrs  Inclusive Name
+              msec   total msec                          usec/call 
+---------------------------------------------------------------------------------------
+100.0          213        5,151           1          34    5151664 .TAU application
+ 95.8        0.095        4,937          17          17     290436 parallelfor (parallel begin/end) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <91, 101>]
+ 95.8        2,946        4,937          17       75561     290431 parallelfor (loop body) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <91, 101>]
+ 35.8        1,843        1,843          17           0     108428 parallelfor (barrier enter/exit) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <91, 101>]
+  2.9          147          147       75544           0          2 find_closest_centroid [THROTTLED]
+  0.0        0.248         0.76          17          17         45 parallelfor (parallel begin/end) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <104, 114>]
+  0.0        0.316        0.512          17          17         30 parallelfor (loop body) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <104, 114>]
+  0.0        0.196        0.196          17           0         12 parallelfor (barrier enter/exit) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <104, 114>]
+
+NODE 0;CONTEXT 0;THREAD 4:
+---------------------------------------------------------------------------------------
+%Time    Exclusive    Inclusive       #Call      #Subrs  Inclusive Name
+              msec   total msec                          usec/call 
+---------------------------------------------------------------------------------------
+100.0          235        5,173           1          34    5173975 .TAU application
+ 95.4        0.065        4,937          17          17     290462 parallelfor (parallel begin/end) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <91, 101>]
+ 95.4        4,348        4,937          17       73893     290458 parallelfor (loop body) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <91, 101>]
+  7.4          382          382       73877           1          5 find_closest_centroid [THROTTLED]
+  4.0          206          206          17           0      12166 parallelfor (barrier enter/exit) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <91, 101>]
+  0.0        0.418        0.905          17          17         53 parallelfor (parallel begin/end) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <104, 114>]
+  0.0        0.237        0.487          17          17         29 parallelfor (loop body) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <104, 114>]
+  0.0         0.25         0.25          17           0         15 parallelfor (barrier enter/exit) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <104, 114>]
+
+NODE 0;CONTEXT 0;THREAD 5:
+---------------------------------------------------------------------------------------
+%Time    Exclusive    Inclusive       #Call      #Subrs  Inclusive Name
+              msec   total msec                          usec/call 
+---------------------------------------------------------------------------------------
+100.0          306        5,244           1          34    5244983 .TAU application
+ 94.1        0.082        4,937          17          17     290444 parallelfor (parallel begin/end) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <91, 101>]
+ 94.1        3,765        4,937          17       75001     290440 parallelfor (loop body) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <91, 101>]
+ 19.6        1,026        1,026          17           0      60411 parallelfor (barrier enter/exit) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <91, 101>]
+  2.8          145          145       74984           0          2 find_closest_centroid [THROTTLED]
+  0.0        0.238        0.689          17          17         41 parallelfor (parallel begin/end) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <104, 114>]
+  0.0        0.241        0.451          17          17         27 parallelfor (loop body) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <104, 114>]
+  0.0         0.21         0.21          17           0         12 parallelfor (barrier enter/exit) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <104, 114>]
+
+NODE 0;CONTEXT 0;THREAD 6:
+---------------------------------------------------------------------------------------
+%Time    Exclusive    Inclusive       #Call      #Subrs  Inclusive Name
+              msec   total msec                          usec/call 
+---------------------------------------------------------------------------------------
+100.0          330        5,268           1          34    5268480 .TAU application
+ 93.7        0.055        4,937          17          17     290455 parallelfor (parallel begin/end) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <91, 101>]
+ 93.7        4,026        4,937          17       74661     290451 parallelfor (loop body) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <91, 101>]
+ 10.6          556          556          17           0      32764 parallelfor (barrier enter/exit) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <91, 101>]
+  7.3          354          387       74645           1          5 find_closest_centroid [THROTTLED]
+  0.0        0.287        0.708          17          17         42 parallelfor (parallel begin/end) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <104, 114>]
+  0.0        0.212        0.421          17          17         25 parallelfor (loop body) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <104, 114>]
+  0.0        0.209        0.209          17           0         12 parallelfor (barrier enter/exit) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <104, 114>]
+
+NODE 0;CONTEXT 0;THREAD 7:
+---------------------------------------------------------------------------------------
+%Time    Exclusive    Inclusive       #Call      #Subrs  Inclusive Name
+              msec   total msec                          usec/call 
+---------------------------------------------------------------------------------------
+100.0          394        5,333           1          34    5333380 .TAU application
+ 92.6        0.099        4,937          17          17     290461 parallelfor (parallel begin/end) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <91, 101>]
+ 92.6        3,848        4,937          17       74275     290455 parallelfor (loop body) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <91, 101>]
+ 17.8          947          947          17           0      55726 parallelfor (barrier enter/exit) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <91, 101>]
+  2.7          141          141       74258           0          2 find_closest_centroid [THROTTLED]
+  0.0        0.254        0.654          17          17         38 parallelfor (parallel begin/end) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <104, 114>]
+  0.0         0.26          0.4          17          17         24 parallelfor (loop body) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <104, 114>]
+  0.0         0.14         0.14          17           0          8 parallelfor (barrier enter/exit) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <104, 114>]
+
+NODE 0;CONTEXT 0;THREAD 8:
+---------------------------------------------------------------------------------------
+%Time    Exclusive    Inclusive       #Call      #Subrs  Inclusive Name
+              msec   total msec                          usec/call 
+---------------------------------------------------------------------------------------
+100.0          475        5,414           1          34    5414183 .TAU application
+ 91.2        0.067        4,937          17          17     290459 parallelfor (parallel begin/end) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <91, 101>]
+ 91.2        3,719        4,937          17       74590     290455 parallelfor (loop body) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <91, 101>]
+ 16.2          876          876          17           0      51576 parallelfor (barrier enter/exit) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <91, 101>]
+  7.1          341          385       74574           1          5 find_closest_centroid [THROTTLED]
+  0.0        0.217        0.776          17          17         46 parallelfor (parallel begin/end) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <104, 114>]
+  0.0        0.333        0.559          17          17         33 parallelfor (loop body) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <104, 114>]
+  0.0        0.226        0.226          17           0         13 parallelfor (barrier enter/exit) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <104, 114>]
+
+NODE 0;CONTEXT 0;THREAD 9:
+---------------------------------------------------------------------------------------
+%Time    Exclusive    Inclusive       #Call      #Subrs  Inclusive Name
+              msec   total msec                          usec/call 
+---------------------------------------------------------------------------------------
+100.0          525        5,464           1          34    5464088 .TAU application
+ 90.4        0.106        4,937          17          17     290448 parallelfor (parallel begin/end) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <91, 101>]
+ 90.4        3,617        4,937          17       74456     290442 parallelfor (loop body) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <91, 101>]
+ 21.6        1,177        1,177          17           0      69280 parallelfor (barrier enter/exit) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <91, 101>]
+  2.6          142          142       74439           0          2 find_closest_centroid [THROTTLED]
+  0.0        0.268        0.747          17          17         44 parallelfor (parallel begin/end) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <104, 114>]
+  0.0        0.277        0.479          17          17         28 parallelfor (loop body) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <104, 114>]
+  0.0        0.202        0.202          17           0         12 parallelfor (barrier enter/exit) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <104, 114>]
+
+NODE 0;CONTEXT 0;THREAD 10:
+---------------------------------------------------------------------------------------
+%Time    Exclusive    Inclusive       #Call      #Subrs  Inclusive Name
+              msec   total msec                          usec/call 
+---------------------------------------------------------------------------------------
+100.0          544        5,483           1          34    5483544 .TAU application
+ 90.0        0.091        4,937          17          17     290465 parallelfor (parallel begin/end) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <91, 101>]
+ 90.0        3,927        4,937          17       73288     290459 parallelfor (loop body) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <91, 101>]
+ 12.1          661          661          17           0      38933 parallelfor (barrier enter/exit) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <91, 101>]
+  6.9          348          378       73272           1          5 find_closest_centroid [THROTTLED]
+  0.0        0.285        0.743          17          17         44 parallelfor (parallel begin/end) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <104, 114>]
+  0.0        0.277        0.458          17          17         27 parallelfor (loop body) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <104, 114>]
+  0.0        0.181        0.181          17           0         11 parallelfor (barrier enter/exit) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <104, 114>]
+
+NODE 0;CONTEXT 0;THREAD 11:
+---------------------------------------------------------------------------------------
+%Time    Exclusive    Inclusive       #Call      #Subrs  Inclusive Name
+              msec   total msec                          usec/call 
+---------------------------------------------------------------------------------------
+100.0          561        5,499           1          34    5499870 .TAU application
+ 89.8        0.065        4,937          17          17     290461 parallelfor (parallel begin/end) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <91, 101>]
+ 89.8        4,404        4,937          17       74102     290458 parallelfor (loop body) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <91, 101>]
+  7.0          360          383       74086           1          5 find_closest_centroid [THROTTLED]
+  3.1          172          172          17           0      10135 parallelfor (barrier enter/exit) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <91, 101>]
+  0.0        0.268        0.742          17          17         44 parallelfor (parallel begin/end) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <104, 114>]
+  0.0        0.285        0.474          17          17         28 parallelfor (loop body) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <104, 114>]
+  0.0        0.189        0.189          17           0         11 parallelfor (barrier enter/exit) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <104, 114>]
+
+FUNCTION SUMMARY (total):
+---------------------------------------------------------------------------------------
+%Time    Exclusive    Inclusive       #Call      #Subrs  Inclusive Name
+              msec   total msec                          usec/call 
+---------------------------------------------------------------------------------------
+100.0        3,829     1:03.491          12         375    5290922 .TAU application
+ 93.3            1       59,253         204         204     290456 parallelfor (parallel begin/end) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <91, 101>]
+ 93.3       45,510       59,251         204      918017     290450 parallelfor (loop body) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <91, 101>]
+ 16.9       10,752       10,752         204           0      52706 parallelfor (barrier enter/exit) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <91, 101>]
+  8.4            1        5,337           1           3    5337895 main 
+  7.8         0.36        4,940           1          34    4940963 kmeans 
+  7.8            1        4,939          17          17     290547 parallelfor (parallel fork/join) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <91, 101>]
+  4.9        2,989        3,134      917819           6          3 find_closest_centroid [THROTTLED]
+  0.6          395          395           1           0     395132 read_file 
+  0.0            3            9         204         204         44 parallelfor (parallel begin/end) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <104, 114>]
+  0.0            3            5         204         204         28 parallelfor (loop body) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <104, 114>]
+  0.0            2            2         204           0         12 parallelfor (barrier enter/exit) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <104, 114>]
+  0.0        0.604            1          17          17         76 parallelfor (parallel fork/join) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <104, 114>]
+  0.0        0.003        0.003           1           0          3 getChecksum 
+
+FUNCTION SUMMARY (mean):
+---------------------------------------------------------------------------------------
+%Time    Exclusive    Inclusive       #Call      #Subrs  Inclusive Name
+              msec   total msec                          usec/call 
+---------------------------------------------------------------------------------------
+100.0          319        5,290           1       31.25    5290922 .TAU application
+ 93.3        0.102        4,937          17          17     290456 parallelfor (parallel begin/end) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <91, 101>]
+ 93.3        3,792        4,937          17     76501.4     290450 parallelfor (loop body) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <91, 101>]
+ 16.9          896          896          17           0      52706 parallelfor (barrier enter/exit) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <91, 101>]
+  8.4         0.15          444   0.0833333        0.25    5337895 main 
+  7.8         0.03          411   0.0833333     2.83333    4940963 kmeans 
+  7.8        0.119          411     1.41667     1.41667     290547 parallelfor (parallel fork/join) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <91, 101>]
+  4.9          249          261     76484.9         0.5          3 find_closest_centroid [THROTTLED]
+  0.6           32           32   0.0833333           0     395132 read_file 
+  0.0        0.273        0.753          17          17         44 parallelfor (parallel begin/end) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <104, 114>]
+  0.0        0.273         0.48          17          17         28 parallelfor (loop body) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <104, 114>]
+  0.0        0.207        0.207          17           0         12 parallelfor (barrier enter/exit) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <104, 114>]
+  0.0       0.0503        0.108     1.41667     1.41667         76 parallelfor (parallel fork/join) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <104, 114>]
+  0.0      0.00025      0.00025   0.0833333           0          3 getChecksum 

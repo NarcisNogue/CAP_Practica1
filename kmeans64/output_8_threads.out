@@ -76,5 +76,5 @@ Centroide 61 : R[80]	G[87]	B[82]
 Centroide 62 : R[39]	G[40]	B[39]
 Centroide 63 : R[71]	G[25]	B[11]
 
-Time to Kmeans is 61 seconds and 526714 microseconds, 61.526714
+Time to Kmeans is 67 seconds and 20223 microseconds, 67.020223
 Checksum value = 124269810

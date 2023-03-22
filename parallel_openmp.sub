@@ -5,21 +5,17 @@
 ##SBATCH -n 1
 #SBATCH --partition=nodo.q
 #SBATCH --exclusive
-
-module load gcc/8.2.0
+#SBATCH --nodelist=clus12
 
 gcc -fopenmp -Ofast kmeans.c -std=c99 -o kmeans    # compile parallel
 gcc -fopenmp -Ofast kmeans_sequential.c -std=c99 -o kmeans_sequential    # compile sequential
 
-#2 4 6 8 10 12
+#1 2 4 6 8 10 12
 num_threads=(1 2 4 6 8 10 12)
-
-echo Running tests for ${num_threads} threads
-
 
 # ./kmeans exec 32 imagen.bmp output.bmp # execute with perf profiler exec
 export OMP_NUM_THREADS=12                       # set number of threads
-perf stat ./kmeans test 1 imagen.bmp            # execute with perf profiler test
+perf stat ./kmeans test 2 imagen.bmp            # execute with perf profiler test
 
 echo "Running sequential test for k = 2"
 ./kmeans_sequential test 2 imagen.bmp > ./kmeans2/output_sequential.out

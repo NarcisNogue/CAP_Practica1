@@ -1,0 +1,97 @@
+96 dynamic_trace_events
+# FunctionId Group Tag "Name Type" Parameters
+0 TAUEVENT 0 ".TAU <unknown event>" TriggerValue
+1 TAU_DEFAULT 0 ".TAU application " EntryExit
+2 TAU_DEFAULT 0 "main [{/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.pomp.c} {173,0}] " EntryExit
+3 TAU_DEFAULT 0 "read_file [{/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeanslib.c} {52,0}] " EntryExit
+4 TAU_DEFAULT 0 "kmeans [{/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.pomp.c} {43,0}] " EntryExit
+5 OpenMP 0 "parallelfor (parallel fork/join) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <91, 101>] " EntryExit
+6 OpenMP 0 "parallelfor (parallel begin/end) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <91, 101>] " EntryExit
+7 OpenMP 0 "parallelfor (loop body) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <91, 101>] " EntryExit
+8 TAU_DISABLE 0 "find_closest_centroid [{/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.pomp.c} {13,0}] [THROTTLED]" EntryExit
+9 OpenMP 0 "parallelfor (barrier enter/exit) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <91, 101>] " EntryExit
+10 OpenMP 0 "parallelfor (parallel fork/join) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <104, 114>] " EntryExit
+11 OpenMP 0 "parallelfor (parallel begin/end) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <104, 114>] " EntryExit
+12 OpenMP 0 "parallelfor (loop body) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <104, 114>] " EntryExit
+13 OpenMP 0 "parallelfor (barrier enter/exit) [OpenMP location: file:/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans.c <104, 114>] " EntryExit
+14 TAU_DEFAULT 0 "getChecksum [{/home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeanslib.c} {127,0}] " EntryExit
+15 TAUEVENT 0 "CPU Cores | 6" TriggerValue
+16 TAUEVENT 0 "CPU MHz | 2600.188" TriggerValue
+17 TAUEVENT 0 "CPU Type | AMD Opteron(tm) Processor 4180" TriggerValue
+18 TAUEVENT 0 "CPU Vendor | AuthenticAMD" TriggerValue
+19 TAUEVENT 0 "CWD | /home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1" TriggerValue
+20 TAUEVENT 0 "Cache Size | 512 KB" TriggerValue
+21 TAUEVENT 0 "Command Line | ./kmeans_tau test 1 imagen.bmp" TriggerValue
+22 TAUEVENT 0 "Executable | /home/alumnos/cap/cap-23/Documents/Practiques/CAP_Practica1/kmeans_tau" TriggerValue
+23 TAUEVENT 0 "Hostname | clus12.hpc.local" TriggerValue
+24 TAUEVENT 0 "Local Time | 2023-03-22T18:49:40+01:00" TriggerValue
+25 TAUEVENT 0 "Memory Size | 7993484 kB" TriggerValue
+26 TAUEVENT 0 "Node Name | clus12.hpc.local" TriggerValue
+27 TAUEVENT 0 "OMP_CHUNK_SIZE | 1" TriggerValue
+28 TAUEVENT 0 "OMP_DYNAMIC | off" TriggerValue
+29 TAUEVENT 0 "OMP_MAX_THREADS | 4" TriggerValue
+30 TAUEVENT 0 "OMP_NESTED | on" TriggerValue
+31 TAUEVENT 0 "OMP_NUM_PROCS | 12" TriggerValue
+32 TAUEVENT 0 "OMP_SCHEDULE | UNKNOWN" TriggerValue
+33 TAUEVENT 0 "OS Machine | x86_64" TriggerValue
+34 TAUEVENT 0 "OS Name | Linux" TriggerValue
+35 TAUEVENT 0 "OS Release | 3.10.0-514.26.2.el7.x86_64" TriggerValue
+36 TAUEVENT 0 "OS Version | #1 SMP Tue Jul 4 15:04:05 UTC 2017" TriggerValue
+37 TAUEVENT 0 "Starting Timestamp | 1679507380094875" TriggerValue
+38 TAUEVENT 0 "TAU Architecture | default" TriggerValue
+39 TAUEVENT 0 "TAU Config |  -prefix=/soft/tau-2.29 -openmp -opari -bfd=download" TriggerValue
+40 TAUEVENT 0 "TAU Makefile | /soft/tau-2.29/x86_64/lib/Makefile.tau-openmp-opari" TriggerValue
+41 TAUEVENT 0 "TAU Version | 2.29-git" TriggerValue
+42 TAUEVENT 0 "TAU_BFD_LOOKUP | on" TriggerValue
+43 TAUEVENT 0 "TAU_CALLPATH_DEPTH | 2" TriggerValue
+44 TAUEVENT 0 "TAU_CALLSITE_DEPTH | 1" TriggerValue
+45 TAUEVENT 0 "TAU_CUDA_BINARY_EXE | " TriggerValue
+46 TAUEVENT 0 "TAU_CUPTI_API | runtime" TriggerValue
+47 TAUEVENT 0 "TAU_EBS_KEEP_UNRESOLVED_ADDR | off" TriggerValue
+48 TAUEVENT 0 "TAU_IBM_BG_HWP_COUNTERS | off" TriggerValue
+49 TAUEVENT 0 "TAU_MAX_THREADS | 128" TriggerValue
+50 TAUEVENT 0 "TAU_MEASURE_TAU | off" TriggerValue
+51 TAUEVENT 0 "TAU_MEMDBG_PROTECT_ABOVE | off" TriggerValue
+52 TAUEVENT 0 "TAU_MEMDBG_PROTECT_BELOW | off" TriggerValue
+53 TAUEVENT 0 "TAU_MEMDBG_PROTECT_FREE | off" TriggerValue
+54 TAUEVENT 0 "TAU_OPENMP_RUNTIME | on" TriggerValue
+55 TAUEVENT 0 "TAU_OPENMP_RUNTIME_EVENTS | on" TriggerValue
+56 TAUEVENT 0 "TAU_OPENMP_RUNTIME_STATES | off" TriggerValue
+57 TAUEVENT 0 "TAU_OUTPUT_CUDA_CSV | off" TriggerValue
+58 TAUEVENT 0 "TAU_PAPI_MULTIPLEXING | off" TriggerValue
+59 TAUEVENT 0 "TAU_PROFILE | off" TriggerValue
+60 TAUEVENT 0 "TAU_PROFILE_FORMAT | profile" TriggerValue
+61 TAUEVENT 0 "TAU_REGION_ADDRESSES | off" TriggerValue
+62 TAUEVENT 0 "TAU_SAMPLING | off" TriggerValue
+63 TAUEVENT 0 "TAU_SHOW_MEMORY_FUNCTIONS | off" TriggerValue
+64 TAUEVENT 0 "TAU_SIGNALS_GDB | off" TriggerValue
+65 TAUEVENT 0 "TAU_SYNCHRONIZE_CLOCKS | off" TriggerValue
+66 TAUEVENT 0 "TAU_THROTTLE | on" TriggerValue
+67 TAUEVENT 0 "TAU_THROTTLE_NUMCALLS | 100000" TriggerValue
+68 TAUEVENT 0 "TAU_THROTTLE_PERCALL | 10" TriggerValue
+69 TAUEVENT 0 "TAU_TRACE | on" TriggerValue
+70 TAUEVENT 0 "TAU_TRACE_FORMAT | tau" TriggerValue
+71 TAUEVENT 0 "TAU_TRACK_CUDA_CDP | off" TriggerValue
+72 TAUEVENT 0 "TAU_TRACK_CUDA_ENV | off" TriggerValue
+73 TAUEVENT 0 "TAU_TRACK_CUDA_INSTRUCTIONS | " TriggerValue
+74 TAUEVENT 0 "TAU_TRACK_CUDA_SASS | off" TriggerValue
+75 TAUEVENT 0 "TAU_TRACK_HEADROOM | off" TriggerValue
+76 TAUEVENT 0 "TAU_TRACK_HEAP | off" TriggerValue
+77 TAUEVENT 0 "TAU_TRACK_IO_PARAMS | off" TriggerValue
+78 TAUEVENT 0 "TAU_TRACK_MEMORY_FOOTPRINT | off" TriggerValue
+79 TAUEVENT 0 "TAU_TRACK_MEMORY_LEAKS | off" TriggerValue
+80 TAUEVENT 0 "TAU_TRACK_SIGNALS | off" TriggerValue
+81 TAUEVENT 0 "TAU_TRACK_UNIFIED_MEMORY | off" TriggerValue
+82 TAUEVENT 0 "Timestamp | 1679507380094968" TriggerValue
+83 TAUEVENT 0 "UTC Time | 2023-03-22T17:49:40Z" TriggerValue
+84 TAUEVENT 0 "pid | 58818" TriggerValue
+85 TAUEVENT 0 "tid | 58818" TriggerValue
+86 TAUEVENT 0 "username | cap-23" TriggerValue
+60000 TRACER 0 "EV_INIT" none
+60001 TRACER 0 "FLUSH" EntryExit
+60003 TRACER 0 "FLUSH_CLOSE" none
+60004 TRACER 0 "FLUSH_INITM" none
+60005 TRACER 0 "WALL_CLOCK" none
+60006 TRACER 0 "CONT_EVENT" none
+60007 TAU_MESSAGE -7 "MESSAGE_SEND" par
+60008 TAU_MESSAGE -8 "MESSAGE_RECV" par

@@ -1,0 +1,43 @@
+cpu-bind=MASK - clus12, task  0  0 [53111]: mask 0xfff set
+Running tests for 1 threads
+TEST = 1
+
+WIDTH : 3840
+HEIGHT: 2160
+LENGHT: 8294400
+
+STEP 1: K = 1
+STEP 2: Init centroids
+STEP 3: Updating centroids
+
+Max number of threads: 12
+Number of K-Means iterations: 2
+
+Centroide 0 : R[119]	G[109]	B[96]
+
+Time to Kmeans is 0 seconds and 277389 microseconds, 0.277389
+Checksum value = 1245216
+
+ Performance counter stats for './kmeans test 1 imagen.bmp':
+
+       2592,310666      task-clock (msec)         #    4,241 CPUs utilized          
+                46      context-switches          #    0,018 K/sec                  
+                12      cpu-migrations            #    0,005 K/sec                  
+             1.463      page-faults               #    0,564 K/sec                  
+     6.703.665.509      cycles                    #    2,586 GHz                      (67,04%)
+        56.224.252      stalled-cycles-frontend   #    0,84% frontend cycles idle     (66,83%)
+     5.523.154.292      stalled-cycles-backend    #  82,39% backend cycles idle       (66,59%)
+     2.468.229.466      instructions              #    0,37  insn per cycle         
+                                                  #    2,24  stalled cycles per insn  (66,72%)
+       435.841.850      branches                  #  168,129 M/sec                    (66,85%)
+           133.440      branch-misses             #    0,03% of all branches          (66,98%)
+
+       0,611229821 seconds time elapsed
+
+Running sequential test for k = 2
+Running sequential test for k = 4
+Running sequential test for k = 8
+Running sequential test for k = 16
+Running sequential test for k = 32
+Running sequential test for k = 64
+slurmstepd: error: *** JOB 155869 ON clus12 CANCELLED AT 2023-03-22T14:10:35 ***

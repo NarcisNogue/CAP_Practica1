@@ -1,0 +1,39 @@
+cpu-bind=MASK - clus12, task  0  0 [51828]: mask 0xfff set
+/soft/gcc-12.2.0/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/cc1: error while loading shared libraries: libzstd.so.1: cannot open shared object file: No such file or directory
+/soft/gcc-12.2.0/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/cc1: error while loading shared libraries: libzstd.so.1: cannot open shared object file: No such file or directory
+Running tests for 12 threads
+TEST = 1
+
+WIDTH : 3840
+HEIGHT: 2160
+LENGHT: 8294400
+
+STEP 1: K = 1
+STEP 2: Init centroids
+STEP 3: Updating centroids
+
+Max number of threads: 12
+Number of K-Means iterations: 2
+
+Centroide 0 : R[119]	G[109]	B[96]
+
+Time to Kmeans is 0 seconds and 219060 microseconds, 0.219060
+Checksum value = 1245216
+
+ Performance counter stats for './kmeans test 1 imagen.bmp':
+
+       1990,787817      task-clock (msec)         #    3,679 CPUs utilized          
+                62      context-switches          #    0,031 K/sec                  
+                12      cpu-migrations            #    0,006 K/sec                  
+             1.472      page-faults               #    0,739 K/sec                  
+     5.152.249.375      cycles                    #    2,588 GHz                      (66,67%)
+        95.926.230      stalled-cycles-frontend   #    1,86% frontend cycles idle     (66,85%)
+     3.949.915.276      stalled-cycles-backend    #  76,66% backend cycles idle       (66,98%)
+     2.102.923.427      instructions              #    0,41  insn per cycle         
+                                                  #    1,88  stalled cycles per insn  (67,13%)
+       429.715.552      branches                  #  215,852 M/sec                    (66,62%)
+           116.251      branch-misses             #    0,03% of all branches          (66,53%)
+
+       0,541152737 seconds time elapsed
+
+Running test with 12 test for k = 32

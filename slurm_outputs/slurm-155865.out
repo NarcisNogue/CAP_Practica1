@@ -1,0 +1,37 @@
+cpu-bind=MASK - clus01, task  0  0 [17467]: mask 0xfff set
+Running tests for 12 threads
+TEST = 1
+
+WIDTH : 3840
+HEIGHT: 2160
+LENGHT: 8294400
+
+STEP 1: K = 1
+STEP 2: Init centroids
+STEP 3: Updating centroids
+
+Max number of threads: 12
+Number of K-Means iterations: 2
+
+Centroide 0 : R[119]	G[109]	B[96]
+
+Time to Kmeans is 0 seconds and 275864 microseconds, 0.275864
+Checksum value = 1245216
+
+ Performance counter stats for './kmeans test 1 imagen.bmp':
+
+       2550,366097      task-clock (msec)         #    4,293 CPUs utilized          
+                87      context-switches          #    0,034 K/sec                  
+                23      cpu-migrations            #    0,009 K/sec                  
+               950      page-faults               #    0,372 K/sec                  
+     6.601.332.289      cycles                    #    2,588 GHz                      (66,71%)
+        69.839.210      stalled-cycles-frontend   #    1,06% frontend cycles idle     (66,47%)
+     5.342.984.230      stalled-cycles-backend    #  80,94% backend cycles idle       (66,53%)
+     2.569.692.981      instructions              #    0,39  insn per cycle         
+                                                  #    2,08  stalled cycles per insn  (66,75%)
+       474.709.966      branches                  #  186,134 M/sec                    (67,00%)
+           141.033      branch-misses             #    0,03% of all branches          (66,98%)
+
+       0,594087761 seconds time elapsed
+
+Running test with 12 test for k = 64

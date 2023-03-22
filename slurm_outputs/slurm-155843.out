@@ -1,0 +1,44 @@
+cpu-bind=MASK - clus01, task  0  0 [16501]: mask 0xfff set
+/soft/gcc-12.2.0/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/cc1: error while loading shared libraries: libzstd.so.1: cannot open shared object file: No such file or directory
+/soft/gcc-12.2.0/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/cc1: error while loading shared libraries: libzstd.so.1: cannot open shared object file: No such file or directory
+Running tests for 12 threads
+TEST = 1
+
+WIDTH : 3840
+HEIGHT: 2160
+LENGHT: 8294400
+
+STEP 1: K = 1
+STEP 2: Init centroids
+STEP 3: Updating centroids
+
+Max number of threads: 12
+Number of K-Means iterations: 2
+
+Centroide 0 : R[119]	G[109]	B[96]
+
+Time to Kmeans is 0 seconds and 226754 microseconds, 0.226754
+Checksum value = 1245216
+
+ Performance counter stats for './kmeans test 1 imagen.bmp':
+
+       1983,060442      task-clock (msec)         #    3,003 CPUs utilized          
+                98      context-switches          #    0,049 K/sec                  
+                26      cpu-migrations            #    0,013 K/sec                  
+               960      page-faults               #    0,484 K/sec                  
+     5.123.275.227      cycles                    #    2,584 GHz                      (66,77%)
+       107.880.613      stalled-cycles-frontend   #    2,11% frontend cycles idle     (66,91%)
+     3.822.465.607      stalled-cycles-backend    #  74,61% backend cycles idle       (67,15%)
+     2.213.683.407      instructions              #    0,43  insn per cycle         
+                                                  #    1,73  stalled cycles per insn  (66,95%)
+       458.466.198      branches                  #  231,191 M/sec                    (66,49%)
+           146.921      branch-misses             #    0,03% of all branches          (66,55%)
+
+       0,660418469 seconds time elapsed
+
+Running test with 12 test for k = 2
+Running test with 12 test for k = 4
+Running test with 12 test for k = 8
+Running test with 12 test for k = 16
+Running test with 12 test for k = 32
+Running test with 12 test for k = 64
